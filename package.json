@@ -2,5 +2,6 @@
   "name": "com.pineone.xlua",
   "version": "0.1.4",
   "displayName": "PineoneLuaScript",
-  "description": "0.1.4 Update"
+  "description": "0.1.4 Update",
+  "type": "tool"
 }
