@@ -21,18 +21,16 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(PineonePlayerController);
-			Utils.BeginObjectRegister(type, L, translator, 0, 1, 3, 3);
+			Utils.BeginObjectRegister(type, L, translator, 0, 1, 2, 2);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Move", _m_Move);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "_speed", _g_get__speed);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "transform", _g_get_transform);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "Obj", _g_get_Obj);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "_speed", _s_set__speed);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "transform", _s_set_transform);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "Obj", _s_set_Obj);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -136,20 +134,6 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_Obj(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                PineonePlayerController gen_to_be_invoked = (PineonePlayerController)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.Obj);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -175,21 +159,6 @@ namespace XLua.CSObjectWrap
 			
                 PineonePlayerController gen_to_be_invoked = (PineonePlayerController)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.transform = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_Obj(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                PineonePlayerController gen_to_be_invoked = (PineonePlayerController)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.Obj = (UnityEngine.UI.Button)translator.GetObject(L, 2, typeof(UnityEngine.UI.Button));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

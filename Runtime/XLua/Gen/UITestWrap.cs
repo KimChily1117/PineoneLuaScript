@@ -21,13 +21,18 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(UITest);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 1, 1);
+			Utils.BeginObjectRegister(type, L, translator, 0, 1, 3, 3);
+			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnClickBtn2", _m_OnClickBtn2);
 			
 			
-			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "Btn2", _g_get_Btn2);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "Btn1", _g_get_Btn1);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "Btn2", _g_get_Btn2);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "_context", _g_get__context);
             
-			Utils.RegisterFunc(L, Utils.SETTER_IDX, "Btn2", _s_set_Btn2);
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "Btn1", _s_set_Btn1);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "Btn2", _s_set_Btn2);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "_context", _s_set__context);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -73,8 +78,49 @@ namespace XLua.CSObjectWrap
         
         
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_OnClickBtn2(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                UITest gen_to_be_invoked = (UITest)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.OnClickBtn2(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_Btn1(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UITest gen_to_be_invoked = (UITest)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.Btn1);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_Btn2(RealStatePtr L)
@@ -90,7 +136,36 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get__context(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UITest gen_to_be_invoked = (UITest)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked._context);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
         
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_Btn1(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UITest gen_to_be_invoked = (UITest)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.Btn1 = (UnityEngine.UI.Button)translator.GetObject(L, 2, typeof(UnityEngine.UI.Button));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_Btn2(RealStatePtr L)
@@ -100,6 +175,21 @@ namespace XLua.CSObjectWrap
 			
                 UITest gen_to_be_invoked = (UITest)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.Btn2 = (UnityEngine.UI.Button)translator.GetObject(L, 2, typeof(UnityEngine.UI.Button));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set__context(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                UITest gen_to_be_invoked = (UITest)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked._context = (UnityEngine.UI.Text)translator.GetObject(L, 2, typeof(UnityEngine.UI.Text));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

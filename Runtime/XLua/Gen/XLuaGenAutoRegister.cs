@@ -22,34 +22,10 @@ namespace XLua.CSObjectWrap
         static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
         {
         
-            translator.DelayWrapLoader(typeof(ClassKYC), ClassKYCWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(EnumKYC), EnumKYCWrap.__Register);
-        
-        
             translator.DelayWrapLoader(typeof(PineonePlayerController), PineonePlayerControllerWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(UITest), UITestWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(Tutorial.BaseClass), TutorialBaseClassWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(Tutorial.TestEnum), TutorialTestEnumWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(Tutorial.DerivedClass), TutorialDerivedClassWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(Tutorial.ICalc), TutorialICalcWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(Tutorial.DerivedClassExtensions), TutorialDerivedClassExtensionsWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(Tutorial.DerivedClass.TestEnumInner), TutorialDerivedClassTestEnumInnerWrap.__Register);
         
         
         
@@ -60,10 +36,6 @@ namespace XLua.CSObjectWrap
             
             wrapInit0(luaenv, translator);
             
-            
-            translator.AddInterfaceBridgeCreator(typeof(CallLuaTest.ItfD), CallLuaTestItfDBridge.__Create);
-            
-            translator.AddInterfaceBridgeCreator(typeof(Tutorial.CSCallLua.ItfD), TutorialCSCallLuaItfDBridge.__Create);
             
         }
         

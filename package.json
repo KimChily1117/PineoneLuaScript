@@ -1,7 +1,6 @@
 {
   "name": "com.pineone.xlua",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "displayName": "PineoneLuaScript",
-  "description": "0.1.1 Added xLua
-    0.1.3 -> Add Btn Event , Movement Event"
+  "description": "0.1.4 Update"
 }
